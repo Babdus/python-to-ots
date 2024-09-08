@@ -4,12 +4,7 @@ import sys
 def main(args):
     condition = ''.join(args)
 
-    condition = "((A == True) or ((B != b) or (G == False))) and (((C) or ((E != e) and (F == f))) or (D == d))"
-
-    ots = """
-        ['&amp;', '|', '&amp;', ('v1', '=', 'string'), ('v2', '!=', True), '|', ('v3', 'not in', ['s1', 's2']),
-        ('v4', '=', 's3'), '&amp;', ('v1', '!=', 'v2'), ('v3', '=', 'str')]
-    """
+    # condition = "((A == True) or ((B != b) or (G == False))) and (((C) or ((E != e) and (F == f))) or (D == d))"
 
     root = []
 
