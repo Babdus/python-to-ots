@@ -34,11 +34,12 @@ def main(args):
             level -= 1
         else:
             inner += ch
+    if inner != '':
+        for word in inner.strip().split():
+            branch.append(word)
     if level != 0:
         raise SyntaxError(condition)
-    print(root)
     root = reorder(root)
-    print(root)
     root = flatten(root)
     print(root)
 
@@ -48,6 +49,10 @@ def replace_operator(operator):
         return '|'
     if operator == 'and':
         return '&amp;'
+    if operator == '==':
+        return '='
+    if operator == '!=':
+        return '!='
     raise SyntaxError(operator)
 
 
@@ -65,7 +70,7 @@ def reorder(root):
     if root[1] in {'or', 'and'}:
         root = [replace_operator(root[1]), reorder(root[0]), reorder(root[2])]
     else:
-        root = (root[0], root[1], replace_boolean(root[2]))
+        root = (root[0], replace_operator(root[1]), replace_boolean(root[2]))
     return root
 
 
